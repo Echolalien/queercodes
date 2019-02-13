@@ -29,7 +29,8 @@ void ofApp::setup(){
     //speakers
 
     //printer
-    printer.open("/dev/tty.PL2303-00002014");
+    printer.open("/dev/serial0");
+    printer.print("Printer initialised");
 
     //graphical debug screen
     ofSetBackgroundColor(0);
@@ -83,6 +84,11 @@ void ofApp::draw(){
     if(unlock>0){
         font.drawString(message[unlock-1], 20, 150);
     }
+}
+
+//--------------------------------------------------------------
+void ofApp::exit(){
+    printer.close();
 }
 
 //--------------------------------------------------------------
