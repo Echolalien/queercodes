@@ -22,15 +22,16 @@ void ofApp::setup(){
     //sound[0].load("music1.wav");
     //sound[1].load("music2.wav");
 
-    //firmata
+    //serial
+    mySerial.setup(0, 9600);
 
     //LCD
     
     //speakers
 
-    //printer
+    printer
     printer.open("/dev/serial0");
-    printer.print("Printer initialised");
+    printer.print("\\n \\n Printer initialised");
 
     //graphical debug screen
     ofSetBackgroundColor(0);
@@ -40,6 +41,8 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    
+    //digits to print
     for(int i = 0; i<4; i++){
         if(i<keyCount){
             digit[i] = "*";
@@ -49,6 +52,7 @@ void ofApp::update(){
         }
     }
 
+    //graphical debug solve check
     if(keyCount==codeLength && resetClock==0){
         int solve = (pad[0]*1000)+(pad[1]*100)+(pad[2]*10)+pad[3];
         for(int i = 0; i<6; i++){
@@ -73,10 +77,23 @@ void ofApp::update(){
             keyCount=0;
         }
     }
+    
+    //serial unlock check
+    myByte = mySerial.readByte();
+    if ( myByte == OF_SERIAL_NO_DATA )
+        printf("no data was read");
+    else if ( myByte == OF_SERIAL_ERROR )
+        printf("an error occurred");
+    else if ( myByte >0){
+        unlock = myByte;
+    }
+
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    
+    //graphical debug
     font.drawString("Enter code:", 20, 50);
     for(int i = 0; i<codeLength; i++){
         font.drawString(digit[i], 20+i*20, 100);

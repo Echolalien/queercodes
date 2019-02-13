@@ -9,6 +9,7 @@ public:
     void setup();
     void update();
     void draw();
+    void exit();
 
     void keyPressed(int key);
     void keyReleased(int key);
@@ -45,9 +46,9 @@ public:
     int keyCount;
     int pad [4];
 
-    //firmata
-
-    //LCD
+    //serial
+    ofSerial mySerial;
+    int myByte = 0;
     
     //speakers
 
