@@ -29,6 +29,7 @@ void ofApp::setup(){
     //speakers
 
     //printer
+    printer.open("/dev/tty.PL2303-00002014");
 
     //graphical debug screen
     ofSetBackgroundColor(0);
