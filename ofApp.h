@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "wiringPi.h"
+#include "ofxThermalPrinter.h"
 
 class ofApp : public ofBaseApp{
 
@@ -48,7 +49,7 @@ public:
     //firmata
 
     //LCD
-
+    
     //speakers
 
     //printer    

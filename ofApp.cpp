@@ -19,13 +19,13 @@ void ofApp::setup(){
     message[3] = "the sun said it hurts to become";
 
     //audio samples
-    sound[0].load("music1.wav");
-    sound[1].load("music2.wav");
+    //sound[0].load("music1.wav");
+    //sound[1].load("music2.wav");
 
     //firmata
 
     //LCD
-
+    
     //speakers
 
     //printer
@@ -56,7 +56,7 @@ void ofApp::update(){
                     sound[i].play();
                 }
             }
-            else if (sound[i].getIsPlaying()==true){
+            else if (sound[i].isPlaying()==true){
                 sound[i].stop();
             }
         }
