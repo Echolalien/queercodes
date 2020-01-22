@@ -36,7 +36,9 @@ public:
     int resetClock;
 
     //text messages
-    string message [5];
+    string message [6];
+    string clue [6];
+    int clueNum = 6;
 
     //audio messages
     ofSoundPlayer sound [6];
@@ -50,8 +52,11 @@ public:
     ofSerial mySerial;
     int myByte = 0;
     
+    //slideshow display
+    int slide = 0;
+    
     //speakers
 
     //printer    
-    ofxThermalPrinter printer;
+//    ofxThermalPrinter printer;
 };

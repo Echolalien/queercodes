@@ -17,6 +17,15 @@ void ofApp::setup(){
     message[1] = "when i was a young boy my father took me into the city";
     message[2] = "in west philadelphia born n raised";
     message[3] = "the sun said it hurts to become";
+    
+    //give clues
+    clue[0] = "berlin wall";
+    clue[1] = "first 4 numbers";
+    clue[2] = "0x0 in binary";
+    clue[3] = "nicenice";
+    clue[4] = "blaze it";
+    clue[5] = "n00b or pro";
+    
 
     //audio samples
     sound[0].load("code1.wav");
@@ -32,9 +41,9 @@ void ofApp::setup(){
     //speakers
 
     //printer
-    printer.open("/dev/serial0");
-    printer.println("");
-    printer.println("Printer initialised");
+//    printer.open("/dev/serial0");
+//    printer.println("");
+//    printer.println("Printer initialised");
 
     //graphical debug screen
     ofSetBackgroundColor(0);
@@ -45,6 +54,27 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     
+    //serial inputs
+    myByte = mySerial.readByte();
+    if ( myByte == OF_SERIAL_NO_DATA ){
+        //comment this out if you want your code to be legible
+        //printf("no data was read\n");
+    }
+    else if ( myByte == OF_SERIAL_ERROR )
+        printf("an error occurred\n");
+    else if ( myByte >= 0 && myByte < 10){
+        cout << myByte << endl;
+        pad[keyCount]=myByte;
+        keyCount++;
+    }
+    else if ( myByte == 110){
+        if(slide < clueNum-1){
+            slide++;
+        }
+        else{
+            slide = 0;
+        }
+    }
     //digits to print
     for(int i = 0; i<4; i++){
         if(i<keyCount){
@@ -81,24 +111,6 @@ void ofApp::update(){
         }
     }
     
-    //serial unlock check
-    myByte = mySerial.readByte();
-    if ( myByte == OF_SERIAL_NO_DATA ){
-        //comment this out if you want your code to be legible
-        //printf("no data was read\n");
-    }
-    else if ( myByte == OF_SERIAL_ERROR )
-        printf("an error occurred\n");
-    else if ( myByte >0){
-        unlock = myByte;
-        cout << myByte << endl;
-        printer.println(message[unlock-1]);
-        if(sound[unlock-1].isLoaded()==true){
-            sound[unlock-1].play();
-
-        }
-    }
-
 }
 
 //--------------------------------------------------------------
@@ -109,14 +121,15 @@ void ofApp::draw(){
     for(int i = 0; i<codeLength; i++){
         font.drawString(digit[i], 20+i*20, 100);
     }
+    font.drawString(clue[slide], 20, 150);
     if(unlock>0){
-        font.drawString(message[unlock-1], 20, 150);
+        font.drawString(message[unlock-1], 20, 250);
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::exit(){
-    printer.close();
+//    printer.close();
 }
 
 //--------------------------------------------------------------

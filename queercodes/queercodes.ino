@@ -61,7 +61,6 @@ void loop() {
   // put your main code here, to run repeatedly:
 
     char key = keypad.getKey();
-    Serial.print(key);
     if (key) {
             if(keyCount<codeLength){
                 pad[keyCount]=key;
@@ -136,6 +135,7 @@ void keypadEvent(KeypadEvent key){
     switch (keypad.getState()){
     case PRESSED:
         if (key == '#') {
+            Serial.print(key);
             digitalWrite(ledPin,!digitalRead(ledPin));
             ledPin_state = digitalRead(ledPin);        // Remember LED state, lit or unlit.
         }
