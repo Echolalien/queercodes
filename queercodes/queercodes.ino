@@ -2,6 +2,9 @@
 #include <Firmata.h>
 #include <LiquidCrystal.h>
 
+const int nextButton = 10;
+bool lastButtonState = LOW;
+ 
 const byte ROWS = 4; //four rows
 const byte COLS = 3; //three columns
 char keys[ROWS][COLS] = {
@@ -45,9 +48,10 @@ void setup() {
 
   Firmata.begin(57600);
   Serial.begin(9600);
-      pinMode(ledPin, OUTPUT);              // Sets the digital pin as output.
-    digitalWrite(ledPin, HIGH);           // Turn the LED on.
-    ledPin_state = digitalRead(ledPin);
+  pinMode(nextButton, INPUT_PULLUP);  
+  pinMode(ledPin, OUTPUT);              // Sets the digital pin as output.
+  digitalWrite(ledPin, HIGH);           // Turn the LED on.
+  ledPin_state = digitalRead(ledPin);
   keypad.addEventListener(keypadEvent);
 
   lcd.begin(16, 2);
@@ -59,7 +63,7 @@ void loop() {
   // put your main code here, to run repeatedly:
 
     char key = keypad.getKey();
-
+    Serial.print(key);
     if (key) {
             if(keyCount<codeLength){
                 pad[keyCount]=key;
@@ -94,8 +98,6 @@ void loop() {
             }
             if(solve==codeLength){
                 unlock=i+1;
-                Serial.print(unlock);
-
             }
             solve=0;
         }
@@ -124,6 +126,12 @@ void loop() {
         lcd.setCursor(0,0);
         lcd.print("Submit Code:");
     }
+
+    bool buttonState =! digitalRead(nextButton);
+    if(buttonState == HIGH && lastButtonState == LOW){
+        Serial.print("n");
+    }
+    lastButtonState = buttonState;
 }
 
 void keypadEvent(KeypadEvent key){

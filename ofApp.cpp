@@ -19,19 +19,22 @@ void ofApp::setup(){
     message[3] = "the sun said it hurts to become";
 
     //audio samples
-    //sound[0].load("music1.wav");
-    //sound[1].load("music2.wav");
+    sound[0].load("code1.wav");
+    sound[1].load("code2.wav");
+    sound[2].load("code3.wav");
+    sound[3].load("code4.wav");
 
     //serial
-    mySerial.setup(0, 9600);
+    mySerial.setup("/dev/cu.usbmodem141201", 9600);
 
     //LCD
     
     //speakers
 
-    printer
-    printer.open("/dev/serial0");
-    printer.print("\\n \\n Printer initialised");
+    //printer
+    //printer.open("/dev/serial0");
+    //printer.println("");
+    //printer.println("Printer initialised");
 
     //graphical debug screen
     ofSetBackgroundColor(0);
@@ -69,7 +72,7 @@ void ofApp::update(){
         resetClock++;
     }
     else if(resetClock>0){
-        if(resetClock<700){
+        if(resetClock<100){
             resetClock++;
         }
         else{
@@ -81,11 +84,15 @@ void ofApp::update(){
     //serial unlock check
     myByte = mySerial.readByte();
     if ( myByte == OF_SERIAL_NO_DATA )
-        printf("no data was read");
+        printf("no data was read\n");
     else if ( myByte == OF_SERIAL_ERROR )
-        printf("an error occurred");
+        printf("an error occurred\n");
     else if ( myByte >0){
         unlock = myByte;
+        //printer.println(message[unlock-1]);
+        if(sound[unlock-1].isLoaded()==true){
+            sound[unlock-1].play();
+        }
     }
 
 }
@@ -105,7 +112,7 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::exit(){
-    printer.close();
+    //printer.close();
 }
 
 //--------------------------------------------------------------
