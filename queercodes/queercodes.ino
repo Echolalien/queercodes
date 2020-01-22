@@ -1,5 +1,4 @@
 #include <Keypad.h>
-#include <Firmata.h>
 #include <LiquidCrystal.h>
 
 const int nextButton = 10;
@@ -46,7 +45,6 @@ LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 void setup() {
   // put your setup code here, to run once:
 
-  Firmata.begin(57600);
   Serial.begin(9600);
   pinMode(nextButton, INPUT_PULLUP);  
   pinMode(ledPin, OUTPUT);              // Sets the digital pin as output.

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-//#include "ofxThermalPrinter.h"
+#include "ofxThermalPrinter.h"
 
 class ofApp : public ofBaseApp{
 
@@ -53,5 +53,5 @@ public:
     //speakers
 
     //printer    
-    //ofxThermalPrinter printer;
+    ofxThermalPrinter printer;
 };

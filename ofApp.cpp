@@ -32,9 +32,9 @@ void ofApp::setup(){
     //speakers
 
     //printer
-    //printer.open("/dev/serial0");
-    //printer.println("");
-    //printer.println("Printer initialised");
+    printer.open("/dev/serial0");
+    printer.println("");
+    printer.println("Printer initialised");
 
     //graphical debug screen
     ofSetBackgroundColor(0);
@@ -83,15 +83,19 @@ void ofApp::update(){
     
     //serial unlock check
     myByte = mySerial.readByte();
-    if ( myByte == OF_SERIAL_NO_DATA )
-        printf("no data was read\n");
+    if ( myByte == OF_SERIAL_NO_DATA ){
+        //comment this out if you want your code to be legible
+        //printf("no data was read\n");
+    }
     else if ( myByte == OF_SERIAL_ERROR )
         printf("an error occurred\n");
     else if ( myByte >0){
         unlock = myByte;
-        //printer.println(message[unlock-1]);
+        cout << myByte << endl;
+        printer.println(message[unlock-1]);
         if(sound[unlock-1].isLoaded()==true){
             sound[unlock-1].play();
+
         }
     }
 
@@ -112,7 +116,7 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::exit(){
-    //printer.close();
+    printer.close();
 }
 
 //--------------------------------------------------------------
