@@ -12,7 +12,7 @@ void ofApp::setup(){
     code[4] = 0420;
     code[5] = 1337;
 
-    //give messages
+    //give transcripts to output to printer
     message[0] = "lorem ipsum salat dolor ipsos";
     message[1] = "when i was a young boy my father took me into the city";
     message[2] = "in west philadelphia born n raised";
@@ -26,6 +26,13 @@ void ofApp::setup(){
     clue[4] = "blaze it";
     clue[5] = "n00b or pro";
     
+    //give questions
+    question[0] = "when did it fall";
+    question[1] = "what are the";
+    question[2] = "what is";
+    question[3] = "lolol imagine";
+    question[4] = "well,";
+    question[5] = "elite eh";
 
     //audio samples
     sound[0].load("code1.wav");
@@ -85,10 +92,10 @@ void ofApp::update(){
         }
     }
 
-    //graphical debug solve check
+    //solve check
     if(keyCount==codeLength && resetClock==0){
         int solve = (pad[0]*1000)+(pad[1]*100)+(pad[2]*10)+pad[3];
-        for(int i = 0; i<6; i++){
+        for(int i = 0; i<6; i++){ //there'll be a memory leak here if u add codes but don't update that number of iterations lol
             if(solve==code[i]){
                 unlock=i+1;
                 if(sound[i].isLoaded()==true){
@@ -97,6 +104,9 @@ void ofApp::update(){
             }
             else if (sound[i].isPlaying()==true){
                 sound[i].stop();
+            }
+            else{
+                unlock=-1;
             }
         }
         resetClock++;
@@ -108,6 +118,7 @@ void ofApp::update(){
         else{
             resetClock=0;
             keyCount=0;
+            unlock=0;
         }
     }
     
@@ -115,16 +126,22 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    
-    //graphical debug
-    font.drawString("Enter code:", 20, 50);
+    ofDrawLine(ofGetWidth()/2, 0, ofGetWidth()/2, ofGetHeight());
+    //graphical display
+    string qn = ofToString("Q: " + question[slide]);
+    font.drawStringCentered(qn, ofGetWidth()/2, ofGetHeight()*0.4);
+    font.drawStringCentered("A:", ofGetWidth()/2 - 60, ofGetHeight()*0.6 - 10);
     for(int i = 0; i<codeLength; i++){
-        font.drawString(digit[i], 20+i*20, 100);
+        font.drawStringCentered(digit[i], ofGetWidth()/2 + i*20 - 30, ofGetHeight()*0.6);
     }
-    font.drawString(clue[slide], 20, 150);
-    if(unlock>0){
-        font.drawString(message[unlock-1], 20, 250);
+    if(unlock > 0){
+        font.drawStringCentered("CODE ACCEPTED", ofGetWidth()/2, ofGetHeight()*0.65);
     }
+    else if(unlock < 0){
+        font.drawStringCentered("INCORRECT CODE", ofGetWidth()/2, ofGetHeight()*0.65);
+    }
+    string clu = ofToString("Hint: " + clue[slide]);
+    font.drawStringCentered(clu, ofGetWidth()/2, ofGetHeight()*0.8);
 }
 
 //--------------------------------------------------------------

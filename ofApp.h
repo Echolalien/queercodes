@@ -1,7 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxThermalPrinter.h"
+#include "ofxCenteredTrueTypeFont.h"
+#include "ofUtils.h"
+//#include "ofxThermalPrinter.h"
 
 class ofApp : public ofBaseApp{
 
@@ -24,7 +26,7 @@ public:
     void gotMessage(ofMessage msg);
 
     //graphical debug screen
-    ofTrueTypeFont font;
+    ofxCenteredTrueTypeFont font;
     string digit [4];
 
     //declare codes
@@ -36,6 +38,7 @@ public:
     int resetClock;
 
     //text messages
+    string question [6];
     string message [6];
     string clue [6];
     int clueNum = 6;
