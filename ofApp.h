@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "ofxCenteredTrueTypeFont.h"
 #include "ofUtils.h"
-//#include "ofxThermalPrinter.h"
+#include "ofxThermalPrinter.h"
 
 class ofApp : public ofBaseApp{
 
@@ -61,5 +61,5 @@ public:
     //speakers
 
     //printer    
-//    ofxThermalPrinter printer;
+    ofxThermalPrinter printer;
 };
