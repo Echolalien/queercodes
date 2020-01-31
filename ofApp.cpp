@@ -35,10 +35,10 @@ void ofApp::setup(){
     question[5] = "elite eh";
 
     //audio samples
-    sound[0].load("code1.wav");
-    sound[1].load("code2.wav");
-    sound[2].load("code3.wav");
-    sound[3].load("code4.wav");
+//    sound[0].load("code1.wav");
+//    sound[1].load("code2.wav");
+//    sound[2].load("code3.wav");
+//    sound[3].load("code4.wav");
 
     //serial
     mySerial.setup("/dev/cu.usbmodem141201", 9600);
