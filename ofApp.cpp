@@ -41,7 +41,7 @@ void ofApp::setup(){
 //    sound[3].load("code4.wav");
 
     //serial
-    mySerial.setup("/dev/cu.usbmodem141201", 9600);
+    mySerial.setup("/dev/cu.usbmodem143401", 9600);
 
     //LCD
     
@@ -69,9 +69,9 @@ void ofApp::update(){
     }
     else if ( myByte == OF_SERIAL_ERROR )
         printf("an error occurred\n");
-    else if ( myByte >= 0 && myByte < 10){
-        cout << myByte << endl;
-        pad[keyCount]=myByte;
+    else if ( myByte >= 48 && myByte < 58){
+        cout << myByte-48 << endl;
+        pad[keyCount]=myByte-48;
         keyCount++;
     }
     else if ( myByte == 110){
@@ -101,13 +101,16 @@ void ofApp::update(){
                 if(sound[i].isLoaded()==true){
                     sound[i].play();
                 }
+                break;
             }
+
             else if (sound[i].isPlaying()==true){
                 sound[i].stop();
             }
             else{
                 unlock=-1;
             }
+            cout<<unlock<<endl;
         }
         resetClock++;
     }
