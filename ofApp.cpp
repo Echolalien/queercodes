@@ -41,14 +41,14 @@ void ofApp::setup(){
 //    sound[3].load("code4.wav");
 
     //serial
-    mySerial.setup("/dev/ACM0", 9600);
+    mySerial.setup("/dev/ttyACM0", 9600);
 
     //LCD
     
     //speakers
 
     //printer
-    printer.open("/dev/serial0");
+    printer.open("/dev/serial1");
     printer.println("");
     printer.println("Printer initialised");
 
@@ -100,6 +100,7 @@ void ofApp::update(){
                 unlock=i+1;
                 if(sound[i].isLoaded()==true){
                     sound[i].play();
+                    printer.println(message[i]);
                 }
                 break;
             }
