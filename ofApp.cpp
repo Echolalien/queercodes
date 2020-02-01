@@ -51,8 +51,7 @@ void ofApp::setup(){
 
     //printer
     printer.open("/dev/serial0");
-    printer.println("");
-    printer.println("Printer initialised");
+    printer.println("\n \n Printer initialised");
 
     //graphical debug screen
     ofSetBackgroundColor(0);
@@ -106,7 +105,6 @@ void ofApp::update(){
                 if(sound[i].isLoaded()==true){
                     sound[i].play();
                 }
-                break;
             }
 
             else if (sound[i].isPlaying()==true){
