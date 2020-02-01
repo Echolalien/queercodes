@@ -71,7 +71,7 @@ void ofApp::update(){
     else if ( myByte == OF_SERIAL_ERROR ){
 //        printf("an error occurred\n");
     }
-    else if ( myByte >= 48 && myByte < 58){
+    else if ( myByte >= 48 && myByte < 58 && keyCount<codeLength){
         //cout << myByte-48 << endl;
         pad[keyCount]=myByte-48;
         keyCount++;
