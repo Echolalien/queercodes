@@ -134,8 +134,7 @@ void ofApp::update(){
 void ofApp::draw(){
     //ofDrawLine(ofGetWidth()/2, 0, ofGetWidth()/2, ofGetHeight());
     //graphical display
-    string qn = ofToString("Q: " + question[slide]);
-    font.drawStringCentered(qn, ofGetWidth()/2, ofGetHeight()*0.4);
+    font.drawStringCentered("Q: " + question[slide], ofGetWidth()/2, ofGetHeight()*0.4);
     font.drawStringCentered("A:", ofGetWidth()/2 - 60, ofGetHeight()*0.6 - 10);
     for(int i = 0; i<codeLength; i++){
         font.drawStringCentered(digit[i], ofGetWidth()/2 + i*20 - 30, ofGetHeight()*0.6);
@@ -146,8 +145,7 @@ void ofApp::draw(){
     else if(unlock < 0){
         font.drawStringCentered("INCORRECT CODE", ofGetWidth()/2, ofGetHeight()*0.65);
     }
-    string clu = ofToString("Hint: " + clue[slide]);
-    font.drawStringCentered(clu, ofGetWidth()/2, ofGetHeight()*0.8);
+    font.drawStringCentered("Hint: " + clue[slide], ofGetWidth()/2, ofGetHeight()*0.8);
 }
 
 //--------------------------------------------------------------
