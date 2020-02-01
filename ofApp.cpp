@@ -50,8 +50,8 @@ void ofApp::setup(){
     //speakers
 
     //printer
-    printer.open("/dev/serial0");
-    printer.println("\n\nPrinter initialised");
+//    printer.open("/dev/serial0");
+//    printer.println("\n\nPrinter initialised");
 
     //graphical debug screen
     ofSetBackgroundColor(0);
@@ -150,7 +150,7 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::exit(){
-    printer.close();
+//    printer.close();
 }
 
 //--------------------------------------------------------------
