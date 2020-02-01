@@ -48,7 +48,7 @@ void ofApp::setup(){
     //speakers
 
     //printer
-    printer.open("/dev/serial1");
+    printer.open("/dev/serial0");
     printer.println("");
     printer.println("Printer initialised");
 
@@ -108,10 +108,10 @@ void ofApp::update(){
             else if (sound[i].isPlaying()==true){
                 sound[i].stop();
             }
-            else{
-                unlock=-1;
+            //change the i == number when you add codes
+            if (i == 6 && unlock < 1){
+                unlock = -1;
             }
-            cout<<unlock<<endl;
         }
         resetClock++;
     }
