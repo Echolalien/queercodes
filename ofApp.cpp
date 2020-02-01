@@ -51,7 +51,7 @@ void ofApp::setup(){
 
     //printer
     printer.open("/dev/serial0");
-    printer.println("\n\n" + "Printer initialised");
+    printer.println("\n\nPrinter initialised");
 
     //graphical debug screen
     ofSetBackgroundColor(0);
@@ -94,39 +94,39 @@ void ofApp::update(){
         }
     }
 
-    //solve check
-    if(keyCount==codeLength && resetClock==0){
-        int solve = (pad[0]*1000)+(pad[1]*100)+(pad[2]*10)+pad[3];
-        for(int i = 0; i<6; i++){ //there'll be a memory leak here if u add codes but don't update that number of iterations lol
-            if(solve==code[i]){
-                unlock=i+1;
-                cout << "printing: " + message[i]<< endl;
-                printer.println(message[i]);
-                if(sound[i].isLoaded()==true){
-                    sound[i].play();
-                }
-            }
-
-            else if (sound[i].isPlaying()==true){
-                sound[i].stop();
-            }
-            //change the i == number when you add codes
-            if (i == 5 && unlock < 1){
-                unlock = -1;
-            }
-        }
-        resetClock++;
-    }
-    else if(resetClock>0){
-        if(resetClock<100){
-            resetClock++;
-        }
-        else{
-            resetClock=0;
-            keyCount=0;
-            unlock=0;
-        }
-    }
+//    //solve check
+//    if(keyCount==codeLength && resetClock==0){
+//        int solve = (pad[0]*1000)+(pad[1]*100)+(pad[2]*10)+pad[3];
+//        for(int i = 0; i<6; i++){ //there'll be a memory leak here if u add codes but don't update that number of iterations lol
+//            if(solve==code[i]){
+//                unlock=i+1;
+//                cout << "printing: " + message[i]<< endl;
+//                printer.println(message[i]);
+//                if(sound[i].isLoaded()==true){
+//                    sound[i].play();
+//                }
+//            }
+//
+//            else if (sound[i].isPlaying()==true){
+//                sound[i].stop();
+//            }
+//            //change the i == number when you add codes
+//            if (i == 5 && unlock < 1){
+//                unlock = -1;
+//            }
+//        }
+//        resetClock++;
+//    }
+//    else if(resetClock>0){
+//        if(resetClock<100){
+//            resetClock++;
+//        }
+//        else{
+//            resetClock=0;
+//            keyCount=0;
+//            unlock=0;
+//        }
+//    }
     
 }
 
