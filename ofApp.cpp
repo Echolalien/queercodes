@@ -50,8 +50,8 @@ void ofApp::setup(){
     //speakers
 
     //printer
-//    printer.open("/dev/serial0");
-//    printer.println("\n\nPrinter initialised");
+    printer.open("/dev/serial0");
+    printer.println("\n\nPrinter initialised");
 
     //graphical debug screen
     ofSetBackgroundColor(0);
@@ -134,23 +134,23 @@ void ofApp::update(){
 void ofApp::draw(){
     //ofDrawLine(ofGetWidth()/2, 0, ofGetWidth()/2, ofGetHeight());
     //graphical display
-    font.drawStringCentered("Q: " + question[slide], ofGetWidth()/2, ofGetHeight()*0.4);
-    font.drawStringCentered("A:", ofGetWidth()/2 - 60, ofGetHeight()*0.6 - 10);
+    font.drawString("Q: " + question[slide], ofGetWidth()/2, ofGetHeight()*0.4);
+    font.drawString("A:", ofGetWidth()/2 - 60, ofGetHeight()*0.6 - 10);
     for(int i = 0; i<codeLength; i++){
-        font.drawStringCentered(digit[i], ofGetWidth()/2 + i*20 - 30, ofGetHeight()*0.6);
+        font.drawString(digit[i], ofGetWidth()/2 + i*20 - 30, ofGetHeight()*0.6);
     }
     if(unlock > 0){
-        font.drawStringCentered("CODE ACCEPTED", ofGetWidth()/2, ofGetHeight()*0.65);
+        font.drawString("CODE ACCEPTED", ofGetWidth()/2, ofGetHeight()*0.65);
     }
     else if(unlock < 0){
-        font.drawStringCentered("INCORRECT CODE", ofGetWidth()/2, ofGetHeight()*0.65);
+        font.drawString("INCORRECT CODE", ofGetWidth()/2, ofGetHeight()*0.65);
     }
-    font.drawStringCentered("Hint: " + clue[slide], ofGetWidth()/2, ofGetHeight()*0.8);
+    font.drawString("Hint: " + clue[slide], ofGetWidth()/2, ofGetHeight()*0.8);
 }
 
 //--------------------------------------------------------------
 void ofApp::exit(){
-//    printer.close();
+    printer.close();
 }
 
 //--------------------------------------------------------------

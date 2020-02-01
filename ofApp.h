@@ -1,9 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxCenteredTrueTypeFont.h"
+//#include "ofxCenteredTrueTypeFont.h"
 #include "ofUtils.h"
-//#include "ofxThermalPrinter.h"
+#include "ofxThermalPrinter.h"
 
 class ofApp : public ofBaseApp{
 
@@ -26,7 +26,7 @@ public:
     void gotMessage(ofMessage msg);
 
     //graphical debug screen
-    ofxCenteredTrueTypeFont font;
+    ofxTrueTypeFont font;
     string digit [4];
 
     //declare codes
@@ -61,5 +61,5 @@ public:
     //speakers
 
     //printer    
-//    ofxThermalPrinter printer;
+    ofxThermalPrinter printer;
 };
