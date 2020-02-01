@@ -17,6 +17,8 @@ void ofApp::setup(){
     message[1] = "when i was a young boy my father took me into the city";
     message[2] = "in west philadelphia born n raised";
     message[3] = "the sun said it hurts to become";
+    message[4] = "more filler";
+    message[5] = "do you love the colour of the sky";
     
     //give clues
     clue[0] = "berlin wall";
@@ -67,8 +69,9 @@ void ofApp::update(){
         //comment this out if you want your code to be legible
         //printf("no data was read\n");
     }
-    else if ( myByte == OF_SERIAL_ERROR )
-        printf("an error occurred\n");
+    else if ( myByte == OF_SERIAL_ERROR ){
+//        printf("an error occurred\n");
+    }
     else if ( myByte >= 48 && myByte < 58){
         cout << myByte-48 << endl;
         pad[keyCount]=myByte-48;
@@ -98,9 +101,10 @@ void ofApp::update(){
         for(int i = 0; i<6; i++){ //there'll be a memory leak here if u add codes but don't update that number of iterations lol
             if(solve==code[i]){
                 unlock=i+1;
+                cout << "printing: " + message[i]<< endl;
+                printer.println(message[i]);
                 if(sound[i].isLoaded()==true){
                     sound[i].play();
-                    printer.println(message[i]);
                 }
                 break;
             }
