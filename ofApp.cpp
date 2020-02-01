@@ -51,7 +51,7 @@ void ofApp::setup(){
 
     //printer
     printer.open("/dev/serial0");
-    printer.println("\n \n Printer initialised");
+    printer.println("\n\n" + "Printer initialised");
 
     //graphical debug screen
     ofSetBackgroundColor(0);
@@ -72,7 +72,7 @@ void ofApp::update(){
 //        printf("an error occurred\n");
     }
     else if ( myByte >= 48 && myByte < 58){
-        cout << myByte-48 << endl;
+        //cout << myByte-48 << endl;
         pad[keyCount]=myByte-48;
         keyCount++;
     }
@@ -111,7 +111,7 @@ void ofApp::update(){
                 sound[i].stop();
             }
             //change the i == number when you add codes
-            if (i == 6 && unlock < 1){
+            if (i == 5 && unlock < 1){
                 unlock = -1;
             }
         }
@@ -132,7 +132,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofDrawLine(ofGetWidth()/2, 0, ofGetWidth()/2, ofGetHeight());
+    //ofDrawLine(ofGetWidth()/2, 0, ofGetWidth()/2, ofGetHeight());
     //graphical display
     string qn = ofToString("Q: " + question[slide]);
     font.drawStringCentered(qn, ofGetWidth()/2, ofGetHeight()*0.4);
@@ -157,7 +157,7 @@ void ofApp::exit(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    cout << key << endl;
+    //cout << key << endl;
     for(int i = 0; i<10; i++){
         if(key==i+48 && keyCount<codeLength){
             pad[keyCount]=i;
