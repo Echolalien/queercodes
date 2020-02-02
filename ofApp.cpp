@@ -94,39 +94,39 @@ void ofApp::update(){
         }
     }
 
-//    //solve check
-//    if(keyCount==codeLength && resetClock==0){
-//        int solve = (pad[0]*1000)+(pad[1]*100)+(pad[2]*10)+pad[3];
-//        for(int i = 0; i<6; i++){ //there'll be a memory leak here if u add codes but don't update that number of iterations lol
-//            if(solve==code[i]){
-//                unlock=i+1;
-//                cout << "printing: " + message[i]<< endl;
-//                printer.println(message[i]);
-//                if(sound[i].isLoaded()==true){
-//                    sound[i].play();
-//                }
-//            }
-//
-//            else if (sound[i].isPlaying()==true){
-//                sound[i].stop();
-//            }
-//            //change the i == number when you add codes
-//            if (i == 5 && unlock < 1){
-//                unlock = -1;
-//            }
-//        }
-//        resetClock++;
-//    }
-//    else if(resetClock>0){
-//        if(resetClock<100){
-//            resetClock++;
-//        }
-//        else{
-//            resetClock=0;
-//            keyCount=0;
-//            unlock=0;
-//        }
-//    }
+    //solve check
+    if(keyCount==codeLength && resetClock==0){
+        int solve = (pad[0]*1000)+(pad[1]*100)+(pad[2]*10)+pad[3];
+        for(int i = 0; i<6; i++){ //there'll be a memory leak here if u add codes but don't update that number of iterations lol
+            if(solve==code[i]){
+                unlock=i+1;
+                cout << "printing: " + message[i]<< endl;
+                printer.println(message[i]);
+                if(sound[i].isLoaded()==true){
+                    sound[i].play();
+                }
+            }
+
+            else if (sound[i].isPlaying()==true){
+                sound[i].stop();
+            }
+            //change the i == number when you add codes
+            if (i == 5 && unlock < 1){
+                unlock = -1;
+            }
+        }
+        resetClock++;
+    }
+    else if(resetClock>0){
+        if(resetClock<100){
+            resetClock++;
+        }
+        else{
+            resetClock=0;
+            keyCount=0;
+            unlock=0;
+        }
+    }
     
 }
 
@@ -134,18 +134,18 @@ void ofApp::update(){
 void ofApp::draw(){
     //ofDrawLine(ofGetWidth()/2, 0, ofGetWidth()/2, ofGetHeight());
     //graphical display
-    font.drawString("Q: " + question[slide], ofGetWidth()/2, ofGetHeight()*0.4);
-    font.drawString("A:", ofGetWidth()/2 - 60, ofGetHeight()*0.6 - 10);
+    font.drawStringCentered("Q: " + question[slide], ofGetWidth()/2, ofGetHeight()*0.4);
+    font.drawStringCentered("A:", ofGetWidth()/2 - 60, ofGetHeight()*0.6 - 10);
     for(int i = 0; i<codeLength; i++){
-        font.drawString(digit[i], ofGetWidth()/2 + i*20 - 30, ofGetHeight()*0.6);
+        font.drawStringCentered(digit[i], ofGetWidth()/2 + i*20 - 30, ofGetHeight()*0.6);
     }
     if(unlock > 0){
-        font.drawString("CODE ACCEPTED", ofGetWidth()/2, ofGetHeight()*0.65);
+        font.drawStringCentered("CODE ACCEPTED", ofGetWidth()/2, ofGetHeight()*0.65);
     }
     else if(unlock < 0){
-        font.drawString("INCORRECT CODE", ofGetWidth()/2, ofGetHeight()*0.65);
+        font.drawStringCentered("INCORRECT CODE", ofGetWidth()/2, ofGetHeight()*0.65);
     }
-    font.drawString("Hint: " + clue[slide], ofGetWidth()/2, ofGetHeight()*0.8);
+    font.drawStringCentered("Hint: " + clue[slide], ofGetWidth()/2, ofGetHeight()*0.8);
 }
 
 //--------------------------------------------------------------

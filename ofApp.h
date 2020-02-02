@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-//#include "ofxCenteredTrueTypeFont.h"
+#include "ofxCenteredTrueTypeFont.h"
 #include "ofUtils.h"
 #include "ofxThermalPrinter.h"
 
@@ -26,7 +26,7 @@ public:
     void gotMessage(ofMessage msg);
 
     //graphical debug screen
-    ofxTrueTypeFont font;
+    ofxCenteredTrueTypeFont font;
     string digit [4];
 
     //declare codes
