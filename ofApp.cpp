@@ -11,6 +11,10 @@ void ofApp::setup(){
     code[3] = 6969;
     code[4] = 0420;
     code[5] = 1337;
+    code[6] = 4321;
+    code[7] = 9696;
+    code[8] = 0240;
+    code[9] = 7331;
 
     //give transcripts to output to printer
     message[0] = "lorem ipsum salat dolor ipsos";
@@ -19,17 +23,25 @@ void ofApp::setup(){
     message[3] = "the sun said it hurts to become";
     message[4] = "more filler";
     message[5] = "do you love the colour of the sky";
+    message[6] = "in west philadelphia born n raised";
+    message[7] = "the sun said it hurts to become";
+    message[8] = "more filler";
+    message[9] = "do you love the colour of the sky";
     
     //give clues
-    clue[0] = "berlin wall";
+    clue[0] = "Look for the cabinet with ephemera around AIDS";
     clue[1] = "first 4 numbers";
     clue[2] = "0x0 in binary";
     clue[3] = "nicenice";
     clue[4] = "blaze it";
     clue[5] = "n00b or pro";
+    clue[6] = "0x0 in binary";
+    clue[7] = "nicenice";
+    clue[8] = "blaze it";
+    clue[9] = "n00b or pro";
     
     //give questions
-    question[0] = "when did it fall";
+    question[0] = "Home to one of the largest LGBTIQ+ communities in Britain, Brighton’s population was disproportionately affected by the HIV virus. What year did the Sunday Mirror run with the headline 'AIDS: Seaside Shocker'?";
     question[1] = "what are the";
     question[2] = "what is";
     question[3] = "lolol imagine";
@@ -41,10 +53,16 @@ void ofApp::setup(){
     question[9] = "elite eh";
     
     //audio samples
-//    sound[0].load("code1.wav");
-//    sound[1].load("code2.wav");
-//    sound[2].load("code3.wav");
-//    sound[3].load("code4.wav");
+    sound[0].load("code1.wav");
+    sound[1].load("code2.wav");
+    sound[2].load("code3.wav");
+    sound[3].load("code4.wav");
+    sound[4].load("code5.wav");
+    sound[5].load("code6.wav");
+    sound[6].load("code7.wav");
+    sound[7].load("code8.wav");
+    sound[8].load("code9.wav");
+    sound[9].load("code10.wav");
 
     //serial
     mySerial.setup("/dev/ttyACM0", 9600);

@@ -20,7 +20,7 @@ public:
     string digit [4];
 
     //declare codes
-    int code [6];
+    int code [10];
     int codeLength;
 
     //unlock mechanics
@@ -29,12 +29,12 @@ public:
 
     //text messages
     string question [10];
-    string message [6];
-    string clue [6];
+    string message [10];
+    string clue [10];
     int clueNum = 6;
 
     //audio messages
-    ofSoundPlayer sound [6];
+    ofSoundPlayer sound [10];
 
 
     //keypad input
@@ -44,7 +44,7 @@ public:
 
     //serial
     ofSerial mySerial;
-    char myByte = 0;
+    char myByte = NULL;
     
     //slideshow display
     int slide = 0;
