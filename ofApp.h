@@ -52,5 +52,5 @@ public:
     //speakers
 
     //printer    
-//    ofxThermalPrinter printer;
+    ofxThermalPrinter printer;
 };

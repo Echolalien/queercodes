@@ -72,8 +72,8 @@ void ofApp::setup(){
     //speakers
 
     //printer
-//    printer.open("/dev/serial0");
-//    printer.println("\n\nPrinter initialised");
+    printer.open("/dev/serial0");
+    printer.println("\n\nPrinter initialised");
 
     //graphical debug screen
     ofSetBackgroundColor(0);
@@ -124,7 +124,7 @@ void ofApp::update(){
             if(solve==code[i]){
                 unlock=i+1;
                 cout << "printing: " + message[i].getText()<< endl;
-//                printer.println(message[i]);
+                printer.println(message[i]);
                 if(sound[i].isLoaded()==true){
                     sound[i].play();
                 }
@@ -174,7 +174,7 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::exit(){
-//    printer.close();
+    printer.close();
 }
 
 //--------------------------------------------------------------
