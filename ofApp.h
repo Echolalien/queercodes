@@ -14,16 +14,6 @@ public:
     void exit();
 
     void keyPressed(int key);
-    void keyReleased(int key);
-    void mouseMoved(int x, int y );
-    void mouseDragged(int x, int y, int button);
-    void mousePressed(int x, int y, int button);
-    void mouseReleased(int x, int y, int button);
-    void mouseEntered(int x, int y);
-    void mouseExited(int x, int y);
-    void windowResized(int w, int h);
-    void dragEvent(ofDragInfo dragInfo);
-    void gotMessage(ofMessage msg);
 
     //graphical debug screen
     ofxCenteredTrueTypeFont font;
@@ -38,7 +28,7 @@ public:
     int resetClock;
 
     //text messages
-    string question [6];
+    string question [10];
     string message [6];
     string clue [6];
     int clueNum = 6;
@@ -50,10 +40,11 @@ public:
     //keypad input
     int keyCount;
     int pad [4];
+    int solve;
 
     //serial
     ofSerial mySerial;
-    int myByte = 0;
+    char myByte = 0;
     
     //slideshow display
     int slide = 0;

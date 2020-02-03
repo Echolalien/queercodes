@@ -35,7 +35,11 @@ void ofApp::setup(){
     question[3] = "lolol imagine";
     question[4] = "well,";
     question[5] = "elite eh";
-
+    question[6] = "what is";
+    question[7] = "lolol imagine";
+    question[8] = "well,";
+    question[9] = "elite eh";
+    
     //audio samples
 //    sound[0].load("code1.wav");
 //    sound[1].load("code2.wav");
@@ -64,16 +68,17 @@ void ofApp::update(){
     
     //serial inputs
     myByte = mySerial.readByte();
-    if ( myByte == OF_SERIAL_NO_DATA ){
-        //comment this out if you want your code to be legible
-        //printf("no data was read\n");
-    }
-    else if ( myByte == OF_SERIAL_ERROR ){
-//        printf("an error occurred\n");
-    }
-    else if ( myByte >= 48 && myByte < 58 && keyCount<codeLength){
+//    if ( myByte == OF_SERIAL_NO_DATA ){
+//        //comment this out if you want your code to be legible
+//        //printf("no data was read\n");
+//    }
+//    else if ( myByte == OF_SERIAL_ERROR ){
+////        printf("an error occurred\n");
+//    }
+    if ( myByte >= 48 && myByte < 58 && keyCount<codeLength){
         //cout << myByte-48 << endl;
-        pad[keyCount]=myByte-48;
+        myByte-=48;
+        pad[keyCount]=myByte;
         keyCount++;
     }
     else if ( myByte == 110){
@@ -96,7 +101,7 @@ void ofApp::update(){
 
     //solve check
     if(keyCount==codeLength && resetClock==0){
-        int solve = (pad[0]*1000)+(pad[1]*100)+(pad[2]*10)+pad[3];
+        solve = (pad[0]*1000)+(pad[1]*100)+(pad[2]*10)+pad[3];
         for(int i = 0; i<6; i++){ //there'll be a memory leak here if u add codes but don't update that number of iterations lol
             if(solve==code[i]){
                 unlock=i+1;
@@ -134,6 +139,7 @@ void ofApp::update(){
 void ofApp::draw(){
     //ofDrawLine(ofGetWidth()/2, 0, ofGetWidth()/2, ofGetHeight());
     //graphical display
+    //add header print
     font.drawStringCentered("Q: " + question[slide], ofGetWidth()/2, ofGetHeight()*0.4);
     font.drawStringCentered("A:", ofGetWidth()/2 - 60, ofGetHeight()*0.6 - 10);
     for(int i = 0; i<codeLength; i++){
@@ -162,54 +168,12 @@ void ofApp::keyPressed(int key){
             keyCount++;
         }
     }
-}
-
-//--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y ){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){
-
+    if ( key == 110){
+        if(slide < clueNum-1){
+            slide++;
+        }
+        else{
+            slide = 0;
+        }
+    }
 }
