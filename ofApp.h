@@ -28,8 +28,8 @@ public:
     int resetClock;
 
     //text messages
+    ofBuffer message [10];
     string question [10];
-    string message [10];
     string clue [10];
     int clueNum = 6;
 
@@ -52,5 +52,5 @@ public:
     //speakers
 
     //printer    
-    ofxThermalPrinter printer;
+//    ofxThermalPrinter printer;
 };
