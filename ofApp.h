@@ -35,7 +35,8 @@ public:
     ofBuffer message [10];
     string question [10];
     string clue [10];
-    int clueNum = 6;
+    int clueNum = 10;
+    string overflow[10];
 
     //audio messages
     ofSoundPlayer sound [10];
@@ -55,5 +56,5 @@ public:
     //speakers
 
     //printer    
-//    ofxThermalPrinter printer;
+    ofxThermalPrinter printer;
 };

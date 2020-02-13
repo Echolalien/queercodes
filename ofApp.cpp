@@ -41,28 +41,33 @@ void ofApp::setup(){
     clue[9] = "";
     
     //give questions
-    question[0] = "Home to one of the largest LGBTIQ+ communities in Britain, Brighton’s population was disproportionately affected by the HIV virus.\nWhat year did the Sunday Mirror run with the headline 'AIDS: Seaside Shocker'?";
+    question[0] = "Home to one of the largest LGBTIQ+ communities in Britain, Brighton’s population was disproportionately affected by the HIV virus.";
+    overflow[0] = "What year did the Sunday Mirror run with the headline 'AIDS: Seaside Shocker'?";
     question[1] = "In what year did the homophobic legislation, Section 28, come into effect?";
-    question[2] = "‘Brighton Head and Freak Magazine’ published a poem by Bill Butler which\nis purported to be about ‘cottaging’. In what year was the poem published?";
+    question[2] = "‘Brighton Head and Freak Magazine’ published a poem by Bill Butler which";
+    overflow[2] = "is purported to be about ‘cottaging’. In what year was the poem published?";
     question[3] = "What year did Anne Lister stay in Brighton?";
-    question[4] = "Brighton’s gay pride started as a protest in 1972.\nA full pride march took place in 1973 but pride didn’t return to\nthe city officially  until what year?";
+    question[4] = "Brighton’s gay pride started as a protest in 1972. A full pride march took";
+    overflow[4] = "place in 1973 but pride didn’t return to the city officially  until what year?";
     question[5] = "Brighton is host to the largest Trans Pride in the UK. What year did it start?";
     question[6] = "What year was Brighton’s first Big Drag Pageant?";
     question[7] = "In what year was the 'Queer in Brighton' anthology published?";
-    question[8] = "The Rotimi Fani-Kayode reproduction is a rare example of local queer black history.\nIn what year was their ‘Under the Surface’ photo taken?";
-    question[9] = "For 24 years, Brighton Ourstory collected and archived material\nrelated to queer history in Brighton. What year was it founded?";
+    question[8] = "The Rotimi Fani-Kayode reproduction is a rare example of local";
+    overflow[8] = "queer black history. In what year was their ‘Under the Surface’ photo taken?";
+    question[9] = "For 24 years, Brighton Ourstory collected and archived material";
+    overflow[9] = "related to queer history in Brighton. What year was it founded?";
     
     //audio samples
-//    sound[0].load("audio0.wav");
-//    sound[1].load("audio1.wav");
+    sound[0].load("audio0.wav");
+    sound[1].load("audio1.wav");
     sound[2].load("audio2.wav");
-//    sound[3].load("audio3.wav");
-//    sound[4].load("audio4.wav");
-//    sound[5].load("audio5.wav");
-//    sound[6].load("audio6.wav");
-//    sound[7].load("audio7.wav");
-//    sound[8].load("audio8.wav");
-//    sound[9].load("audio9.wav");
+    sound[3].load("audio3.wav");
+    sound[4].load("audio4.wav");
+    sound[5].load("audio5.wav");
+    sound[6].load("audio6.wav");
+    sound[7].load("audio7.wav");
+    sound[8].load("audio8.wav");
+    sound[9].load("audio9.wav");
 
     //serial
     mySerial.setup("/dev/ttyACM0", 9600);
@@ -72,8 +77,8 @@ void ofApp::setup(){
     //speakers
 
 //    //printer
-//    printer.open("/dev/serial0");
-//    printer.println("\n\nPrinter initialised");
+    printer.open("/dev/serial0");
+    printer.println("\n\nPrinter initialised");
 
     //hdmi output
     enigmaScale = 0.2;
@@ -130,7 +135,7 @@ void ofApp::update(){
             if(solve==code[i]){
                 unlock=i+1;
                 cout << "printing: " + message[i].getText()<< endl;
-//                printer.println(message[i]);
+                printer.println(message[i]);
                 if(sound[i].isLoaded()==true){
                     sound[i].play();
                 }
@@ -164,7 +169,7 @@ void ofApp::draw(){
     breaker.draw(ofGetWidth()/1.5, ofGetHeight()/2);
     enigma.draw(ofGetWidth()/60, ofGetHeight()/2.2);
     font.drawStringCentered("Q: " + question[slide], ofGetWidth()/2, ofGetHeight()*0.4);
-    font.drawStringCentered("A:", ofGetWidth()/2 - 60, ofGetHeight()*0.6 - 10);
+        font.drawStringCentered(overflow[slide], ofGetWidth()/2, ofGetHeight()*0.43);   font.drawStringCentered("A:", ofGetWidth()/2 - 60, ofGetHeight()*0.6 - 10);
     for(int i = 0; i<codeLength; i++){
         font.drawStringCentered(digit[i], ofGetWidth()/2 + i*20 - 30, ofGetHeight()*0.6);
     }
@@ -179,7 +184,7 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::exit(){
-//    printer.close();
+    printer.close();
 }
 
 //--------------------------------------------------------------
