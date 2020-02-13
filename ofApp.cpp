@@ -71,14 +71,20 @@ void ofApp::setup(){
     
     //speakers
 
-    //printer
-    printer.open("/dev/serial0");
-    printer.println("\n\nPrinter initialised");
+//    //printer
+//    printer.open("/dev/serial0");
+//    printer.println("\n\nPrinter initialised");
 
-    //graphical debug screen
+    //hdmi output
+    enigmaScale = 0.2;
+    breakerScale = 0.2;
     ofSetBackgroundColor(0);
     font.load("arial", 20, true, true, false);
     ofSetColor(255);
+    breaker.load("breaker.png");
+    breaker.resize(breaker.getWidth() * breakerScale, breaker.getHeight() * breakerScale);
+    enigma.load("enigma.png");
+    enigma.resize(enigma.getWidth() * enigmaScale, enigma.getHeight() * enigmaScale);
 }
 
 //--------------------------------------------------------------
@@ -120,11 +126,11 @@ void ofApp::update(){
     //solve check
     if(keyCount==codeLength && resetClock==0){
         solve = (pad[0]*1000)+(pad[1]*100)+(pad[2]*10)+pad[3];
-        for(int i = 0; i<6; i++){ //there'll be a memory leak here if u add codes but don't update that number of iterations lol
+        for(int i = 0; i<10; i++){ //there'll be a memory leak here if u add codes but don't update that number of iterations lol
             if(solve==code[i]){
                 unlock=i+1;
                 cout << "printing: " + message[i].getText()<< endl;
-                printer.println(message[i]);
+//                printer.println(message[i]);
                 if(sound[i].isLoaded()==true){
                     sound[i].play();
                 }
@@ -133,12 +139,9 @@ void ofApp::update(){
             else if (sound[i].isPlaying()==true){
                 sound[i].stop();
             }
-            //change the i == number when you add codes
-            if (i == 5 && unlock < 1){
-                unlock = -1;
-            }
         }
         resetClock++;
+        if(unlock<1) unlock = -1;
     }
     else if(resetClock>0){
         if(resetClock<100){
@@ -158,6 +161,8 @@ void ofApp::draw(){
     ofDrawLine(ofGetWidth()/2, 0, ofGetWidth()/2, ofGetHeight());
     //graphical display
     //add header print
+    breaker.draw(ofGetWidth()/1.5, ofGetHeight()/2);
+    enigma.draw(ofGetWidth()/60, ofGetHeight()/2.2);
     font.drawStringCentered("Q: " + question[slide], ofGetWidth()/2, ofGetHeight()*0.4);
     font.drawStringCentered("A:", ofGetWidth()/2 - 60, ofGetHeight()*0.6 - 10);
     for(int i = 0; i<codeLength; i++){
@@ -174,7 +179,7 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::exit(){
-    printer.close();
+//    printer.close();
 }
 
 //--------------------------------------------------------------

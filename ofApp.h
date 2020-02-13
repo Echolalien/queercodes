@@ -15,9 +15,13 @@ public:
 
     void keyPressed(int key);
 
-    //graphical debug screen
+    //hdmi output
     ofxCenteredTrueTypeFont font;
     string digit [4];
+    ofImage breaker;
+    ofImage enigma;
+    float enigmaScale;
+    float breakerScale;
 
     //declare codes
     int code [10];
@@ -36,7 +40,6 @@ public:
     //audio messages
     ofSoundPlayer sound [10];
 
-
     //keypad input
     int keyCount;
     int pad [4];
@@ -52,5 +55,5 @@ public:
     //speakers
 
     //printer    
-    ofxThermalPrinter printer;
+//    ofxThermalPrinter printer;
 };
