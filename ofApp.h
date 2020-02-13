@@ -32,14 +32,14 @@ public:
     int resetClock;
 
     //text messages
-    ofBuffer message [10];
+    ofBuffer message [10][3];
     string question [10];
     string clue [10];
     int clueNum = 10;
     string overflow[10];
 
     //audio messages
-    ofSoundPlayer sound [10];
+    ofSoundPlayer sound [10][3];
 
     //keypad input
     int keyCount;
