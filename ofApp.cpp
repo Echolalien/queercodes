@@ -175,9 +175,9 @@ void ofApp::update(){
         for(int i = 0; i<10; i++){ //there'll be a memory leak here if u add codes but don't update that number of iterations lol
             if(solve==code[i]){
                 unlock=i+1;
-                int roulette = ofRandom(2);
+                int roulette = ofRandom(0,2);
                 cout << "\nPrinting:\n" + message[i][roulette].getText()<< endl;
-                printer.println(message[i]);
+                printer.println(message[i][roulette]);
                 if(sound[i][roulette].isLoaded()==true){
                     sound[i][0].stop();
                     sound[i][1].stop();
