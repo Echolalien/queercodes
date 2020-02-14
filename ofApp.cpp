@@ -80,8 +80,8 @@ void ofApp::setup(){
     
     //audio samples
     sound[0][0].load("audio1_1.mp3");
-//    sound[1][0].load("audio2_1.mp3");
-//    sound[2][0].load("audio3_1.mp3");
+    sound[1][0].load("audio2_1.mp3");
+    sound[2][0].load("audio3_1.mp3");
 //    sound[3][0].load("audio4_1.mp3");
 //    sound[4][0].load("audio5_1.mp3");
 //    sound[5][0].load("audio6_1.mp3");
