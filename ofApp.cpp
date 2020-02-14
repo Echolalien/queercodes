@@ -89,26 +89,26 @@ void ofApp::setup(){
     sound[7][0].load("audio8_1.mp3");
     sound[8][0].load("audio9_1.mp3");
     sound[9][0].load("audio10_1.mp3");
-//    sound[0][1].load("audio1_1.mp3");
-    sound[1][1].load("audio2_2.mp3");
-//    sound[2][1].load("audio3_1.mp3");
-//    sound[3][1].load("audio4_1.mp3");
-//    sound[4][1].load("audio5_1.mp3");
-    sound[5][1].load("audio6_2.mp3");
-//    sound[6][1].load("audio7_1.mp3");
-    sound[7][1].load("audio8_2.mp3");
-    sound[8][1].load("audio9_2.mp3");
-//    sound[9][1].load("audio10_1.mp3");
-//    sound[0][2].load("audio1_1.mp3");
-//    sound[1][2].load("audio2_2.mp3");
-//    sound[2][2].load("audio3_1.mp3");
-    sound[3][2].load("audio4_3.mp3");
-//    sound[4][2].load("audio5_1.mp3");
-//    sound[5][2].load("audio6_3.mp3"); THIS
-//    sound[6][2].load("audio7_1.mp3");
-    sound[7][2].load("audio8_3.mp3");
-//    sound[8][2].load("audio9_2.mp3");
-//    sound[9][2].load("audio10_1.mp3");
+////    sound[0][1].load("audio1_1.mp3");
+//    sound[1][1].load("audio2_2.mp3");
+////    sound[2][1].load("audio3_1.mp3");
+////    sound[3][1].load("audio4_1.mp3");
+////    sound[4][1].load("audio5_1.mp3");
+//    sound[5][1].load("audio6_2.mp3");
+////    sound[6][1].load("audio7_1.mp3");
+//    sound[7][1].load("audio8_2.mp3");
+//    sound[8][1].load("audio9_2.mp3");
+////    sound[9][1].load("audio10_1.mp3");
+////    sound[0][2].load("audio1_1.mp3");
+////    sound[1][2].load("audio2_2.mp3");
+////    sound[2][2].load("audio3_1.mp3");
+//    sound[3][2].load("audio4_3.mp3");
+////    sound[4][2].load("audio5_1.mp3");
+////    sound[5][2].load("audio6_3.mp3"); THIS
+////    sound[6][2].load("audio7_1.mp3");
+//    sound[7][2].load("audio8_3.mp3");
+////    sound[8][2].load("audio9_2.mp3");
+////    sound[9][2].load("audio10_1.mp3");
 
     //serial
     mySerial.setup("/dev/ttyACM0", 9600);
