@@ -79,7 +79,7 @@ void ofApp::setup(){
     overflow[9] = "related to queer history in Brighton. What year was it founded?";
     
     //audio samples
-    sound[0][0].load("audio1_1.wav");
+    sound[0][0].load("audio1_1.mp3");
     sound[1][0].load("audio2_1.wav");
     sound[2][0].load("audio3_1.wav");
     sound[3][0].load("audio4_1.wav");
@@ -118,8 +118,8 @@ void ofApp::setup(){
     //speakers
 
 //    //printer
-    printer.open("/dev/serial0");
-    printer.println("\n\nPrinter initialised");
+//    printer.open("/dev/serial0");
+//    printer.println("\n\nPrinter initialised");
 
     //hdmi output
     enigmaScale = 0.2;
@@ -179,7 +179,7 @@ void ofApp::update(){
                 bool blank;
                 if(!message[i][roulette].getText().empty()){
                     cout << "\nPrinting:\n" + message[i][roulette].getText()<< endl;
-                    printer.println(message[i][roulette]);
+//                    printer.println(message[i][roulette]);
                 }
                 else{
                     blank = true;
@@ -198,8 +198,8 @@ void ofApp::update(){
                         sound[i][0].play();
                     }
                     if(!message[i][0].getText().empty()){
-                        cout << "\nPrinting:\n" + message[i][roulette].getText()<< endl;
-                    printer.println(message[i][roulette]);
+                        cout << "\nPrinting:\n" + message[i][0].getText()<< endl;
+//                    printer.println(message[i][0]);
                     }
                 }
             }
@@ -250,7 +250,7 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::exit(){
-    printer.close();
+//    printer.close();
 }
 
 //--------------------------------------------------------------
