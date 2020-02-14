@@ -18,35 +18,35 @@ void ofApp::setup(){
 
     //give transcripts to output to printer
     message[0][0] =  ofBufferFromFile("text1_1.txt");
-    message[0][1] =  ofBufferFromFile("text1_1.txt");
-    message[0][2] =  ofBufferFromFile("text1_1.txt");
+//    message[0][1] =  ofBufferFromFile("text1_1.txt");
+//    message[0][2] =  ofBufferFromFile("text1_1.txt");
     message[1][0] =  ofBufferFromFile("text2_1.txt");
     message[1][1] =  ofBufferFromFile("text2_2.txt");
     message[1][2] =  ofBufferFromFile("text2_3.txt");
     message[2][0] =  ofBufferFromFile("text3_1.txt");
-    message[2][1] =  ofBufferFromFile("text3_1.txt");
-    message[2][2] =  ofBufferFromFile("text3_1.txt");
+//    message[2][1] =  ofBufferFromFile("text3_1.txt");
+//    message[2][2] =  ofBufferFromFile("text3_1.txt");
     message[3][0] =  ofBufferFromFile("text4_1.txt");
     message[3][1] =  ofBufferFromFile("text4_2.txt");
     message[3][2] =  ofBufferFromFile("text4_3.txt");
     message[4][0] =  ofBufferFromFile("text5_1.txt");
-    message[4][1] =  ofBufferFromFile("text5_1.txt");
-    message[4][2] =  ofBufferFromFile("text5_1.txt");
+//    message[4][1] =  ofBufferFromFile("text5_1.txt");
+//    message[4][2] =  ofBufferFromFile("text5_1.txt");
     message[5][0] =  ofBufferFromFile("text6_1.txt");
     message[5][1] =  ofBufferFromFile("text6_2.txt");
     message[5][2] =  ofBufferFromFile("text6_3.txt");
     message[6][0] =  ofBufferFromFile("text7_1.txt");
-    message[6][1] =  ofBufferFromFile("text7_1.txt");
-    message[6][2] =  ofBufferFromFile("text7_1.txt");
+//    message[6][1] =  ofBufferFromFile("text7_1.txt");
+//    message[6][2] =  ofBufferFromFile("text7_1.txt");
     message[7][0] =  ofBufferFromFile("text8_1.txt");
     message[7][1] =  ofBufferFromFile("text8_2.txt");
     message[7][2] =  ofBufferFromFile("text8_3.txt");
     message[8][0] =  ofBufferFromFile("text9_1.txt");
     message[8][1] =  ofBufferFromFile("text9_2.txt");
-    message[8][2] =  ofBufferFromFile("text9_2.txt");
+//    message[8][2] =  ofBufferFromFile("text9_2.txt");
     message[9][0] =  ofBufferFromFile("text10_1.txt");
     message[9][1] =  ofBufferFromFile("text10_2.txt");
-    message[9][2] =  ofBufferFromFile("text10_2.txt");
+//    message[9][2] =  ofBufferFromFile("text10_2.txt");
     
     
     //give clues
@@ -100,14 +100,14 @@ void ofApp::setup(){
     sound[8][1].load("audio9_2.wav");
 //    sound[9][1].load("audio10_1.wav");
 //    sound[0][2].load("audio1_1.wav");
-    sound[1][2].load("audio2_2.wav");
+//    sound[1][2].load("audio2_2.wav");
 //    sound[2][2].load("audio3_1.wav");
     sound[3][2].load("audio4_3.wav");
 //    sound[4][2].load("audio5_1.wav");
     sound[5][2].load("audio6_3.wav");
 //    sound[6][2].load("audio7_1.wav");
     sound[7][2].load("audio8_3.wav");
-    sound[8][2].load("audio9_2.wav");
+//    sound[8][2].load("audio9_2.wav");
 //    sound[9][2].load("audio10_1.wav");
 
     //serial
@@ -176,13 +176,31 @@ void ofApp::update(){
             if(solve==code[i]){
                 unlock=i+1;
                 int roulette = (int) ofRandom(3);
-                cout << "\nPrinting:\n" + message[i][roulette].getText()<< endl;
-                printer.println(message[i][roulette]);
+                bool blank;
+                if(!message[i][roulette].getText().empty()){
+                    cout << "\nPrinting:\n" + message[i][roulette].getText()<< endl;
+                    printer.println(message[i][roulette]);
+                }
+                else{
+                    blank = true;
+                }
                 if(sound[i][roulette].isLoaded()==true){
                     sound[i][0].stop();
                     sound[i][1].stop();
                     sound[i][2].stop();
                     sound[i][roulette].play();
+                }
+                else if(blank == true){
+                    if(sound[i][0].isLoaded()==true){
+                        sound[i][0].stop();
+                        sound[i][1].stop();
+                        sound[i][2].stop();
+                        sound[i][0].play();
+                    }
+                    if(!message[i][0].getText().empty()){
+                        cout << "\nPrinting:\n" + message[i][roulette].getText()<< endl;
+                    printer.println(message[i][roulette]);
+                    }
                 }
             }
 
