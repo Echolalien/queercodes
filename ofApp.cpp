@@ -85,7 +85,7 @@ void ofApp::setup(){
     sound[3][0].load("audio4_1.wav");
     sound[4][0].load("audio5_1.wav");
     sound[5][0].load("audio6_1.wav");
-    sound[6][0].load("audio7_1.wav");
+//    sound[6][0].load("audio7_1.wav");
     sound[7][0].load("audio8_1.wav");
     sound[8][0].load("audio9_1.wav");
     sound[9][0].load("audio10_1.wav");
@@ -95,7 +95,7 @@ void ofApp::setup(){
     sound[3][1].load("audio4_1.wav");
     sound[4][1].load("audio5_1.wav");
     sound[5][1].load("audio6_2.wav");
-    sound[6][1].load("audio7_1.wav");
+//    sound[6][1].load("audio7_1.wav");
     sound[7][1].load("audio8_2.wav");
     sound[8][1].load("audio9_2.wav");
     sound[9][1].load("audio10_1.wav");
@@ -105,7 +105,7 @@ void ofApp::setup(){
     sound[3][2].load("audio4_3.wav");
     sound[4][2].load("audio5_1.wav");
     sound[5][2].load("audio6_3.wav");
-    sound[6][2].load("audio7_1.wav");
+//    sound[6][2].load("audio7_1.wav");
     sound[7][2].load("audio8_3.wav");
     sound[8][2].load("audio9_2.wav");
     sound[9][2].load("audio10_1.wav");
