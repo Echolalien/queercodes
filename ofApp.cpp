@@ -179,7 +179,9 @@ void ofApp::update(){
                 bool blank;
                 if(!message[i][roulette].getText().empty()){
                     cout << "\nPrinting:\n" + message[i][roulette].getText()<< endl;
+                    printer.println("Queer Codebreakers\nQueer the Pier Exhibition 2020\n\n");
                     printer.println(message[i][roulette]);
+                    printer.println("\n\nExcerpt from Queer in Brighton oral history collection.");
                 }
                 else{
                     blank = true;
@@ -199,7 +201,9 @@ void ofApp::update(){
                     }
                     if(!message[i][0].getText().empty()){
                         cout << "\nPrinting:\n" + message[i][0].getText()<< endl;
-                    printer.println(message[i][0]);
+                        printer.println("Queer Codebreakers\nQueer the Pier Exhibition 2020\n\n");
+                        printer.println(message[i][0]);
+                        printer.println("\n\nExcerpt from Queer in Brighton oral history collection.");
                     }
                 }
             }
@@ -229,7 +233,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofDrawLine(ofGetWidth()/2, 0, ofGetWidth()/2, ofGetHeight());
+    //ofDrawLine(ofGetWidth()/2, 0, ofGetWidth()/2, ofGetHeight());
     //graphical display
     //add header print
     breaker.draw(ofGetWidth()/1.5, ofGetHeight()/2);
