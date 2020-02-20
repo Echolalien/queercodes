@@ -117,7 +117,7 @@ void ofApp::setup(){
     
     //speakers
 
-    //printer
+//    //printer
     printer.open("/dev/serial0");
     printer.println("\n\nPrinter initialised");
 
@@ -162,7 +162,7 @@ void ofApp::update(){
     //digits to print
     for(int i = 0; i<4; i++){
         if(i<keyCount){
-            digit[i] = "*";
+            digit[i] = ofToString(pad[i]);
         }
         else{
             digit[i] = "_";
@@ -235,13 +235,12 @@ void ofApp::update(){
 void ofApp::draw(){
     //ofDrawLine(ofGetWidth()/2, 0, ofGetWidth()/2, ofGetHeight());
     //graphical display
-    //add header print
     breaker.draw(ofGetWidth()/1.5, ofGetHeight()/2);
     enigma.draw(ofGetWidth()/60, ofGetHeight()/2.2);
     font.drawStringCentered("Q: " + question[slide], ofGetWidth()/2, ofGetHeight()*0.4);
         font.drawStringCentered(overflow[slide], ofGetWidth()/2, ofGetHeight()*0.43);   font.drawStringCentered("A:", ofGetWidth()/2 - 60, ofGetHeight()*0.6 - 10);
     for(int i = 0; i<codeLength; i++){
-        font.drawStringCentered(digit[i], ofGetWidth()/2 + i*20 - 30, ofGetHeight()*0.6);
+        font.drawStringCentered(digit[i], ofGetWidth()/2 + i*20 - 30, ofGetHeight()*0.591);
     }
     if(unlock > 0){
         font.drawStringCentered("CODE ACCEPTED", ofGetWidth()/2, ofGetHeight()*0.65);
